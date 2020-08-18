@@ -1,6 +1,6 @@
 // Dependencies
 const express = require("express");
-const router = express.Router();
+const routes = require("./routes");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 // Sequelize models
@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Routes go here
-app.use(router);
+app.use(routes);
 
 // Have our app listen after sequelize models are synced
 db.sequelize.sync({ force: true }).then(() => {
