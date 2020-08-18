@@ -8,5 +8,11 @@ module.exports = function (sequelize, DataTypes) {
       },
     },
   });
+
+  Commitments.associate = function (models) {
+    Commitments.hasMany(models.Tasks, {
+      onDelete: "cascade",
+    });
+  };
   return Commitments;
 };
