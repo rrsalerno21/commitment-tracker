@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
       },
     },
     due_date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
       defaultValue: new Date(),
       val: {
