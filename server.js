@@ -2,7 +2,6 @@
 const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
-// const cors = require(cors);
 require("dotenv").config();
 // Sequelize models
 const db = require("./models");
@@ -16,8 +15,12 @@ const app = express();
 // Setup Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(cors);
 app.use(express.static("public"));
+
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 // Routes go here
 app.use(router);
